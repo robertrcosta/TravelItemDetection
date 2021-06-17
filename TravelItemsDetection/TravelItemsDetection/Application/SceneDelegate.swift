@@ -1,6 +1,6 @@
 //
 //  SceneDelegate.swift
-//  VacancyRecap
+//  TravelItemsDetection
 //
 //  Created by Gerard Riera Puig on 17/6/21.
 //

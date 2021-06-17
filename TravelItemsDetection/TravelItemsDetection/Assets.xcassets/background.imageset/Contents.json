@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "summer-holiday-background-beach-accessories-white-wood-copy-space-vacation-travel-items-concept_1205-1254.jpg",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "summer-holiday-background-beach-accessories-white-wood-copy-space-vacation-travel-items-concept_1205-1254@2x.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "summer-holiday-background-beach-accessories-white-wood-copy-space-vacation-travel-items-concept_1205-1254@3x.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
