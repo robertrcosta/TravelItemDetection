@@ -35,6 +35,13 @@ class DetectionScreenViewController: UIViewController {
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        
+        guard let image = mediaInfo[.originalImage] as? UIImage else { return }
+        
+        let imageView = UIImageView(image: image)
+        imageView.contentMode = .scaleAspectFit
+        view.addSubviewWithPinnedConstraints(view: imageView, top: 0, leading: 0, bottom: 0, trailing: 0)
+        imageView.translatesAutoresizingMaskIntoConstraints = false
     }
 
     override func viewDidAppear(_ animated: Bool) {
