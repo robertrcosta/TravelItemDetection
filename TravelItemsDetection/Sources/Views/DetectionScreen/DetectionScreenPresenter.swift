@@ -73,7 +73,7 @@ class DetectionScreenPresenter {
                     objectObservation.boundingBox,
                     Int(screenWidth),
                     Int(newImage.size.width/screenWidth * newImage.size.height))
-
+                
                 self?.output?.drawBox(rect: objectBounds, identifier: topLabelObservation.identifier, confidence: topLabelObservation.confidence)
             }
         }

@@ -45,8 +45,12 @@ class DetectionScreenViewController: UIViewController {
         
         imageView = UIImageView(image: image)
         imageView.contentMode = .scaleAspectFit
-        view.addSubviewWithPinnedConstraints(view: imageView, top: 0, leading: 0, bottom: 0, trailing: 0)
+        view.addSubview(imageView)
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        imageView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        imageView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        imageView.heightAnchor.constraint(equalToConstant: (image.size.height/image.size.width) * UIScreen.main.bounds.width).isActive = true
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -56,10 +60,10 @@ class DetectionScreenViewController: UIViewController {
     func drawBox(rect: CGRect, identifier: String, confidence: VNConfidence) {
         let shapeLayer = self.createRoundedRectLayerWithBounds(rect)
         
-        let textLayer = self.createTextSubLayerInBounds(
-            rect,
-            identifier: identifier,
-            confidence: confidence)
+//        let textLayer = self.createTextSubLayerInBounds(
+//            rect,
+//            identifier: identifier,
+//            confidence: confidence)
         
         imageView.layer.insertSublayer(shapeLayer, at: 10)
     }
@@ -85,7 +89,7 @@ class DetectionScreenViewController: UIViewController {
     func createRoundedRectLayerWithBounds(_ bounds: CGRect) -> CALayer {
         let shapeLayer = CALayer()
         shapeLayer.bounds = bounds
-        shapeLayer.position = CGPoint(x: bounds.midX, y: bounds.midY + 200)
+        shapeLayer.position = CGPoint(x: bounds.midX, y: bounds.midY)
         shapeLayer.name = "Found Object"
         shapeLayer.backgroundColor = CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [1.0, 1.0, 0.2, 0.4])
         shapeLayer.cornerRadius = 7
