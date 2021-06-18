@@ -10,15 +10,16 @@ import CoreML
 import Vision
 
 class DetectionScreenPresenter {
-    
+
+    weak var output: DetectionScreenViewController?
     let model = try? TravelItemDetectionModel(configuration: MLModelConfiguration())
-    
+
     func processImage(info: [UIImagePickerController.InfoKey : Any]) {
         
         guard let image = info[.originalImage] as? UIImage else { return }
         
-        UIGraphicsBeginImageContextWithOptions(CGSize(width: 416, height: 416), true, 2.0)
-        image.draw(in: CGRect(x: 0, y: 0, width: 416, height: 416))
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: 400, height: 300), true, 1.0)
+        image.draw(in: CGRect(x: 0, y: 0, width: 400, height: 300))
         
         let newImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
@@ -56,7 +57,25 @@ class DetectionScreenPresenter {
 
 
         let request = VNCoreMLRequest(model: detector) { [weak self] request, error in
-            print(request)
+            guard let results = request.results else {
+                return
+            }
+            
+            for observation in results where observation is VNRecognizedObjectObservation {
+                guard let objectObservation = observation as? VNRecognizedObjectObservation else {
+                    continue
+                }
+                
+                let screenWidth = UIScreen.main.bounds.width
+                
+                let topLabelObservation = objectObservation.labels[0]
+                let objectBounds = VNImageRectForNormalizedRect(
+                    objectObservation.boundingBox,
+                    Int(screenWidth),
+                    Int(newImage.size.width/screenWidth * newImage.size.height))
+
+                self?.output?.drawBox(rect: objectBounds, identifier: topLabelObservation.identifier, confidence: topLabelObservation.confidence)
+            }
         }
         // .scaleFill results in a slight skew but the model was trained accordingly
         // see https://developer.apple.com/documentation/vision/vnimagecropandscaleoption for more information
@@ -70,4 +89,5 @@ class DetectionScreenPresenter {
             print("CoreML request failed with error: \(error.localizedDescription)")
         }
     }
+
 }
