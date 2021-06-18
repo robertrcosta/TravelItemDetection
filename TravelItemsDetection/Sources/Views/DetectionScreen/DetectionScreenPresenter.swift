@@ -1,14 +1,14 @@
 //
-//  Presenter.swift
+//  DetectionScreenPresenter.swift
 //  TravelItemsDetection
 //
-//  Created by Gerard Riera Puig on 17/6/21.
+//  Created by Robert Rodriguez on 18/6/21.
 //
 
 import UIKit
 import CoreML
 
-class Presenter {
+class DetectionScreenPresenter {
     
     let model = try? YOLOv3Tiny(configuration: MLModelConfiguration())
     

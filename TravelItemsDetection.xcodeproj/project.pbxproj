@@ -16,9 +16,11 @@
 		A0AB5856267B5CAA0028DB6E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0AB5854267B5CAA0028DB6E /* Main.storyboard */; };
 		A0AB5858267B5CAC0028DB6E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0AB5857267B5CAC0028DB6E /* Assets.xcassets */; };
 		A0AB585B267B5CAC0028DB6E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0AB5859267B5CAC0028DB6E /* LaunchScreen.storyboard */; };
-		A0AB5864267B62BA0028DB6E /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AB5863267B62BA0028DB6E /* Presenter.swift */; };
+		A0AB5864267B62BA0028DB6E /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AB5863267B62BA0028DB6E /* MainPresenter.swift */; };
 		A0AB586D267B7D130028DB6E /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AB586C267B7D130028DB6E /* ListViewController.swift */; };
 		A0AB5870267B7D670028DB6E /* ListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AB586F267B7D670028DB6E /* ListPresenter.swift */; };
+		B557E3F4267C8D650022FC9E /* DetectionScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B557E3F3267C8D650022FC9E /* DetectionScreenViewController.swift */; };
+		B557E3FA267C8DD50022FC9E /* DetectionScreenPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B557E3F9267C8DD50022FC9E /* DetectionScreenPresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,9 +35,11 @@
 		A0AB5857267B5CAC0028DB6E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A0AB585A267B5CAC0028DB6E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A0AB585C267B5CAC0028DB6E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A0AB5863267B62BA0028DB6E /* Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
+		A0AB5863267B62BA0028DB6E /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
 		A0AB586C267B7D130028DB6E /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		A0AB586F267B7D670028DB6E /* ListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPresenter.swift; sourceTree = "<group>"; };
+		B557E3F3267C8D650022FC9E /* DetectionScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectionScreenViewController.swift; sourceTree = "<group>"; };
+		B557E3F9267C8DD50022FC9E /* DetectionScreenPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectionScreenPresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,8 +64,9 @@
 		A01B506D267B7E1800ACBB24 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				A0AB5874267B7D980028DB6E /* List */,
+				B557E3F6267C8D6F0022FC9E /* DetectionScreen */,
 				A0AB5873267B7D8F0028DB6E /* Main */,
+				A0AB5874267B7D980028DB6E /* List */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -125,7 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				A0AB5852267B5CAA0028DB6E /* ViewController.swift */,
-				A0AB5863267B62BA0028DB6E /* Presenter.swift */,
+				A0AB5863267B62BA0028DB6E /* MainPresenter.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -147,6 +152,15 @@
 				A0AB585C267B5CAC0028DB6E /* Info.plist */,
 			);
 			path = Application;
+			sourceTree = "<group>";
+		};
+		B557E3F6267C8D6F0022FC9E /* DetectionScreen */ = {
+			isa = PBXGroup;
+			children = (
+				B557E3F3267C8D650022FC9E /* DetectionScreenViewController.swift */,
+				B557E3F9267C8DD50022FC9E /* DetectionScreenPresenter.swift */,
+			);
+			path = DetectionScreen;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -223,8 +237,10 @@
 				A0AB584F267B5CAA0028DB6E /* AppDelegate.swift in Sources */,
 				A004F096267C87FE001BF508 /* YOLOv3Tiny.mlmodel in Sources */,
 				A01B5075267B7F1400ACBB24 /* UIView+Utils.swift in Sources */,
-				A0AB5864267B62BA0028DB6E /* Presenter.swift in Sources */,
+				B557E3F4267C8D650022FC9E /* DetectionScreenViewController.swift in Sources */,
+				A0AB5864267B62BA0028DB6E /* MainPresenter.swift in Sources */,
 				A0AB586D267B7D130028DB6E /* ListViewController.swift in Sources */,
+				B557E3FA267C8DD50022FC9E /* DetectionScreenPresenter.swift in Sources */,
 				A01B5070267B7E2B00ACBB24 /* ItemCell.swift in Sources */,
 				A0AB5870267B7D670028DB6E /* ListPresenter.swift in Sources */,
 				A0AB5851267B5CAA0028DB6E /* SceneDelegate.swift in Sources */,

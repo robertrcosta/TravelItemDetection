@@ -9,7 +9,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    private var presenter = Presenter()
+    private var presenter = MainPresenter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -148,7 +148,7 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         dismiss(animated: true, completion: {
-            self.presenter.processImage(info: info)
+            self.navigationController?.show(DetectionScreenViewController(mediaInfo: info), sender: nil)
         })   
     }
 }
