@@ -253,6 +253,7 @@
 				B557E3F4267C8D650022FC9E /* DetectionScreenViewController.swift in Sources */,
 				A0AB5864267B62BA0028DB6E /* MainPresenter.swift in Sources */,
 				A0549425267C8E4E00940A09 /* Item.swift in Sources */,
+				A0AB586D267B7D130028DB6E /* ListViewController.swift in Sources */,
 				A0AB5864267B62BA0028DB6E /* MainPresenter.swift in Sources */,
 				A0549434267C925700940A09 /* PhraseCell.swift in Sources */,
 				A054941C267C8D5C00940A09 /* ResultViewController.swift in Sources */,

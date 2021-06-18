@@ -11,8 +11,10 @@ class ResultViewController: UIViewController {
     
     let presenter = ResultPresenter()
     
-    let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
+    // MARK: - View Variables
     
+    let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
+    let tableView = UITableView()
     let pageControl = UIPageControl()
     
     override func viewDidLoad() {
@@ -21,6 +23,8 @@ class ResultViewController: UIViewController {
     }
     
     func setup() {
+        
+        title = "Don't you miss something?"
         
         view.backgroundColor = .white
         
@@ -32,6 +36,7 @@ class ResultViewController: UIViewController {
         view.addSubviewWithPinnedConstraints(view: background, top: 0, leading: 0, bottom: 0, trailing: 0)
         
         let scrollView = UIScrollView()
+        scrollView.showsVerticalScrollIndicator = false
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(scrollView)
         view.safeAreaLayoutGuide.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor).isActive = true
@@ -65,13 +70,13 @@ class ResultViewController: UIViewController {
         blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         blurEffectView.translatesAutoresizingMaskIntoConstraints = false
         
-        contentStackView.addSubview(blurEffectView)
+        stackCollection.addSubview(blurEffectView)
         
         contentStackView.addArrangedSubview(stackCollection)
         
         let contentCollectionView = UIView()
         contentCollectionView.translatesAutoresizingMaskIntoConstraints = false
-        contentCollectionView.heightAnchor.constraint(equalToConstant: 300).isActive = true
+        contentCollectionView.heightAnchor.constraint(equalToConstant: 150).isActive = true
         stackCollection.addArrangedSubview(contentCollectionView)
         
         pageControl.translatesAutoresizingMaskIntoConstraints = false
@@ -82,18 +87,51 @@ class ResultViewController: UIViewController {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        
         collectionView.register(PhraseCell.self, forCellWithReuseIdentifier: "PhraseCell")
         collectionView.isPagingEnabled = true
         collectionView.backgroundColor = .clear
         collectionView.collectionViewLayout = layout
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.showsVerticalScrollIndicator = false
-        collectionView.delegate = self
-        collectionView.dataSource = self
         
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         contentCollectionView.addSubviewWithPinnedConstraints(view: collectionView, top: 15, leading: 15, bottom: 15, trailing: 15)
+        
         collectionView.reloadData()
+        
+        let travelItemsLbl = UILabel()
+        travelItemsLbl.text = "Your travel items: "
+        travelItemsLbl.font = UIFont.boldSystemFont(ofSize: 25)
+        
+        contentStackView.addArrangedSubview(travelItemsLbl)
+        
+        let contentTableView = UIView()
+        contentTableView.translatesAutoresizingMaskIntoConstraints = false
+        contentTableView.heightAnchor.constraint(equalToConstant: 300).isActive = true
+        
+        let blurEffectTableView = UIBlurEffect(style: UIBlurEffect.Style.systemUltraThinMaterial)
+        let blurEffectViewTableView = UIVisualEffectView(effect: blurEffectTableView)
+        blurEffectViewTableView.layer.cornerRadius = 20
+        blurEffectViewTableView.clipsToBounds = true
+        blurEffectViewTableView.frame = contentTableView.bounds
+        blurEffectViewTableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        blurEffectViewTableView.translatesAutoresizingMaskIntoConstraints = false
+        
+        contentTableView.addSubview(blurEffectViewTableView)
+        
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.backgroundColor = .clear
+        tableView.separatorStyle = .none
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        contentTableView.addSubviewWithPinnedConstraints(view: tableView, top: 0, leading: 0, bottom: 0, trailing: 0)
+        
+        contentStackView.addArrangedSubview(contentTableView)
+        
+        tableView.reloadData()
     }
     
     func cellForPhrase(at indexPath: IndexPath) -> UICollectionViewCell {
@@ -105,10 +143,26 @@ class ResultViewController: UIViewController {
             return UICollectionViewCell()
         }
     }
+    
+    func cellForItem(at indexPath: IndexPath) -> UITableViewCell {
+        let cell = ItemCell(style: .default, reuseIdentifier: "ItemCell")
+        let item = presenter.items[indexPath.row]
+        cell.selectionStyle = .none
+        cell.accessoryType = item.checked ? .checkmark : .none
+        cell.nameLbl.text = item.name
+        
+        let separator = UIView()
+        separator.heightAnchor.constraint(equalToConstant: 1).isActive = true
+        separator.backgroundColor = UIColor(red: 150/255, green: 150/255, blue: 150/255, alpha: 0.1)
+        
+        separator.translatesAutoresizingMaskIntoConstraints = false
+        cell.addSubviewWithPinnedConstraints(view: separator, leading: 0, bottom: 0, trailing: 0)
+        
+        return cell
+    }
 }
 
 extension ResultViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         pageControl.numberOfPages = presenter.items.count
         return presenter.items.count
@@ -128,11 +182,15 @@ extension ResultViewController: UICollectionViewDelegate, UICollectionViewDataSo
 }
 
 extension ResultViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return presenter.items.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        cellForItem(at: indexPath)
     }
 }
