@@ -8,10 +8,5 @@
 import Foundation
 
 class ResultPresenter {
-    var items = [
-        Item(name: "ToothBrush",
-             phrase: "How do you pretend to brush your teeth?"),
-        Item(name: "Passport",
-             phrase: "How do you pretend to travel without documentation?")
-    ]
+    
 }

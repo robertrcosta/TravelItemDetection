@@ -10,12 +10,22 @@ import UIKit
 class ResultViewController: UIViewController {
     
     let presenter = ResultPresenter()
+    var items = [Item]()
     
     // MARK: - View Variables
     
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
     let tableView = UITableView()
     let pageControl = UIPageControl()
+    
+    init(items: [Item]) {
+        self.items = items
+        super.init(nibName: nil, bundle: .main)
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -136,7 +146,7 @@ class ResultViewController: UIViewController {
     
     func cellForPhrase(at indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhraseCell", for: indexPath) as? PhraseCell {
-            let phrase = presenter.items[indexPath.row].phrase
+            let phrase = items[indexPath.row].phrase
             cell.phraseLbl.text = phrase
             return cell
         } else {
@@ -146,7 +156,7 @@ class ResultViewController: UIViewController {
     
     func cellForItem(at indexPath: IndexPath) -> UITableViewCell {
         let cell = ItemCell(style: .default, reuseIdentifier: "ItemCell")
-        let item = presenter.items[indexPath.row]
+        let item = items[indexPath.row]
         cell.selectionStyle = .none
         cell.accessoryType = item.checked ? .checkmark : .none
         cell.nameLbl.text = item.name
@@ -164,8 +174,8 @@ class ResultViewController: UIViewController {
 
 extension ResultViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        pageControl.numberOfPages = presenter.items.count
-        return presenter.items.count
+        pageControl.numberOfPages = items.count
+        return items.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -187,7 +197,7 @@ extension ResultViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return presenter.items.count
+        return items.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
