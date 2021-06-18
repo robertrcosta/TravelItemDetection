@@ -90,3 +90,35 @@ fastlane/test_output
 iOSInjectionProject/
 
 .DS_Store
+TravelItemDetectionModel.mlproj/Project.json
+TravelItemDetectionModel.mlproj/Checkpoints/120C8370-0FD9-4B45-ADE4-8722B5CE0446.TravelItemDetectionModel2.checkpoint/meta.plist
+TravelItemDetectionModel.mlproj/Checkpoints/120C8370-0FD9-4B45-ADE4-8722B5CE0446.TravelItemDetectionModel2.checkpoint/parameters.plist
+TravelItemDetectionModel.mlproj/Checkpoints/120C8370-0FD9-4B45-ADE4-8722B5CE0446.TravelItemDetectionModel2.checkpoint/data/DataTable/dir_archive.ini
+TravelItemDetectionModel.mlproj/Checkpoints/120C8370-0FD9-4B45-ADE4-8722B5CE0446.TravelItemDetectionModel2.checkpoint/data/DataTable/m_1a1e33c3badabf10.0000
+TravelItemDetectionModel.mlproj/Checkpoints/120C8370-0FD9-4B45-ADE4-8722B5CE0446.TravelItemDetectionModel2.checkpoint/data/DataTable/m_1a1e33c3badabf10.frame_idx
+TravelItemDetectionModel.mlproj/Checkpoints/120C8370-0FD9-4B45-ADE4-8722B5CE0446.TravelItemDetectionModel2.checkpoint/data/DataTable/m_1a1e33c3badabf10.sidx
+TravelItemDetectionModel.mlproj/Checkpoints/120C8370-0FD9-4B45-ADE4-8722B5CE0446.TravelItemDetectionModel2.checkpoint/data/DataTable/objects.bin
+TravelItemDetectionModel.mlproj/Checkpoints/120C8370-0FD9-4B45-ADE4-8722B5CE0446.TravelItemDetectionModel2.checkpoint/training-000002500.checkpoint/dir_archive.ini
+TravelItemDetectionModel.mlproj/Checkpoints/120C8370-0FD9-4B45-ADE4-8722B5CE0446.TravelItemDetectionModel2.checkpoint/training-000002500.checkpoint/objects.bin
+TravelItemDetectionModel.mlproj/Checkpoints/120C8370-0FD9-4B45-ADE4-8722B5CE0446.TravelItemDetectionModel2.checkpoint/training-000002500.checkpoint.model/checkpointModel.mlmodel
+TravelItemDetectionModel.mlproj/Checkpoints/CF2E93C8-EEA3-4B78-8B38-47D36F724AD0.TravelItemDetectionModel1.checkpoint/meta.plist
+TravelItemDetectionModel.mlproj/Checkpoints/CF2E93C8-EEA3-4B78-8B38-47D36F724AD0.TravelItemDetectionModel1.checkpoint/parameters.plist
+TravelItemDetectionModel.mlproj/Checkpoints/CF2E93C8-EEA3-4B78-8B38-47D36F724AD0.TravelItemDetectionModel1.checkpoint/data/DataTable/dir_archive.ini
+TravelItemDetectionModel.mlproj/Checkpoints/CF2E93C8-EEA3-4B78-8B38-47D36F724AD0.TravelItemDetectionModel1.checkpoint/data/DataTable/m_13cfce4eac4f6f96.0000
+TravelItemDetectionModel.mlproj/Checkpoints/CF2E93C8-EEA3-4B78-8B38-47D36F724AD0.TravelItemDetectionModel1.checkpoint/data/DataTable/m_13cfce4eac4f6f96.sidx
+TravelItemDetectionModel.mlproj/Checkpoints/CF2E93C8-EEA3-4B78-8B38-47D36F724AD0.TravelItemDetectionModel1.checkpoint/data/DataTable/m_be8a1887784056c3.0000
+TravelItemDetectionModel.mlproj/Checkpoints/CF2E93C8-EEA3-4B78-8B38-47D36F724AD0.TravelItemDetectionModel1.checkpoint/data/DataTable/m_be8a1887784056c3.frame_idx
+TravelItemDetectionModel.mlproj/Checkpoints/CF2E93C8-EEA3-4B78-8B38-47D36F724AD0.TravelItemDetectionModel1.checkpoint/data/DataTable/m_be8a1887784056c3.sidx
+TravelItemDetectionModel.mlproj/Checkpoints/CF2E93C8-EEA3-4B78-8B38-47D36F724AD0.TravelItemDetectionModel1.checkpoint/data/DataTable/objects.bin
+TravelItemDetectionModel.mlproj/Checkpoints/CF2E93C8-EEA3-4B78-8B38-47D36F724AD0.TravelItemDetectionModel1.checkpoint/training-000001520.checkpoint/dir_archive.ini
+TravelItemDetectionModel.mlproj/Checkpoints/CF2E93C8-EEA3-4B78-8B38-47D36F724AD0.TravelItemDetectionModel1.checkpoint/training-000001520.checkpoint/objects.bin
+TravelItemDetectionModel.mlproj/Checkpoints/CF2E93C8-EEA3-4B78-8B38-47D36F724AD0.TravelItemDetectionModel1.checkpoint/training-000001520.checkpoint.model/checkpointModel.mlmodel
+TravelItemDetectionModel.mlproj/Data Sources/TravelItemDetectionDatasetDataset.json
+TravelItemDetectionModel.mlproj/Model Containers/TravelItemDetectionModel 1.json
+TravelItemDetectionModel.mlproj/Model Containers/TravelItemDetectionModel 2.json
+TravelItemDetectionModel.mlproj/Models/TravelItemDetectionModel 1.mlmodel
+TravelItemDetectionModel.mlproj/Models/TravelItemDetectionModel 2.mlmodel
+TravelItemDetectionModel.mlproj/Snapshots/TravelItemDetectionModel 1 Iteration 1510.json
+TravelItemDetectionModel.mlproj/Snapshots/TravelItemDetectionModel 1 Iteration 1510.mlmodel
+TravelItemDetectionModel.mlproj/Snapshots/TravelItemDetectionModel 2 Iteration 2500.json
+TravelItemDetectionModel.mlproj/Snapshots/TravelItemDetectionModel 2 Iteration 2500.mlmodel
