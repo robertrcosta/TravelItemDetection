@@ -16,6 +16,8 @@ class DetectionScreenViewController: UIViewController {
     
     var imageView: UIImageView!
     
+    let nextBtn = UIButton(type: .system)
+    
     init(mediaInfo: [UIImagePickerController.InfoKey : Any]) {
         super.init(nibName: nil, bundle: nil)
         
@@ -51,6 +53,13 @@ class DetectionScreenViewController: UIViewController {
         imageView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         imageView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         imageView.heightAnchor.constraint(equalToConstant: (image.size.height/image.size.width) * UIScreen.main.bounds.width).isActive = true
+        
+        nextBtn.translatesAutoresizingMaskIntoConstraints = false
+        nextBtn.setTitle("Continue", for: .normal)
+        nextBtn.setTitleColor(.white, for: .normal)
+        nextBtn.addTarget(self, action: #selector(pushResultVC), for: .touchUpInside)
+        nextBtn.isHidden = true
+        view.addSubviewWithPinnedConstraints(view: nextBtn, bottom: 30, trailing: 30)
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -66,6 +75,15 @@ class DetectionScreenViewController: UIViewController {
 //            confidence: confidence)
         
         imageView.layer.insertSublayer(shapeLayer, at: 10)
+    }
+    
+    func enableNextBtn() {
+        nextBtn.isHidden = false
+    }
+    
+    @objc
+    func pushResultVC() {
+        navigationController?.show(ResultViewController(items: presenter.items), sender: nil)
     }
     
     func createTextSubLayerInBounds(_ bounds: CGRect, identifier: String, confidence: VNConfidence) -> CATextLayer {
@@ -95,6 +113,5 @@ class DetectionScreenViewController: UIViewController {
         shapeLayer.cornerRadius = 7
         return shapeLayer
     }
-    
 }
 

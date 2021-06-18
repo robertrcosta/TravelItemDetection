@@ -10,9 +10,63 @@ import CoreML
 import Vision
 
 class DetectionScreenPresenter {
+    
+    public var items = [
+        Item(
+            name: "Bagpack",
+            phrase: "How do you pretend to carry your things?",
+            checked: false
+        ),
+        Item(
+            name: "Camera",
+            phrase: "How do you pretend to craete visualizable memories of your beautiful experiences?",
+            checked: false
+        ),
+        Item(
+            name: "Charger",
+            phrase: "How do you pretend to be adicted to your social feeds while you should enjoy your vacations?",
+            checked: false
+        ),
+        Item(
+            name: "Face mask",
+            phrase: "How do you pretend to proctect against the COVID-19?",
+            checked: false
+        ),
+        Item(
+            name: "Flip flops",
+            phrase: "Do you really want to walk barefooted on your vacations?",
+            checked: false
+        ),
+        Item(
+            name: "Pastport",
+            phrase: "What are you going to show on the Airport's police control?",
+            checked: false
+        ),
+        Item(
+            name: "Shirt",
+            phrase: "How do you pretend to carry your things?",
+            checked: false
+        ),
+        Item(
+            name: "Socks",
+            phrase: "How do you pretend to protect your foot?",
+            checked: false
+        ),
+        Item(
+            name: "Suncream",
+            phrase: "You're gonna burn your skin",
+            checked: false
+        ),
+        Item(
+            name: "Sunglasses",
+            phrase: "You'll be blind without those",
+            checked: false
+        )
+    ]
 
     weak var output: DetectionScreenViewController?
     let model = try? TravelItemDetectionModel(configuration: MLModelConfiguration())
+    var labelsArr = [String]()
 
     func processImage(info: [UIImagePickerController.InfoKey : Any]) {
         
@@ -48,15 +102,14 @@ class DetectionScreenPresenter {
         UIGraphicsPopContext()
         CVPixelBufferUnlockBaseAddress(pixelBuffer!, CVPixelBufferLockFlags(rawValue: 0))
         
-        
         guard let mlModel = try? model?.model,
               let detector = try? VNCoreMLModel(for: mlModel) else {
             print("Failed to load detector!")
             return
         }
 
-
         let request = VNCoreMLRequest(model: detector) { [weak self] request, error in
+            guard let `self` = self else { return }
             guard let results = request.results else {
                 return
             }
@@ -79,8 +132,25 @@ class DetectionScreenPresenter {
                 let translate = CGAffineTransform(translationX: 0, y: -newImage.size.height)
                 let newBounds = objectBounds.applying(translate).applying(verticalFlip)
                 
-                self?.output?.drawBox(rect: newBounds, identifier: topLabelObservation.identifier, confidence: topLabelObservation.confidence)
+                self.output?.drawBox(rect: newBounds, identifier: topLabelObservation.identifier, confidence: topLabelObservation.confidence)
+                self.labelsArr.append(topLabelObservation.identifier)
             }
+            
+            print("labelsArr: \(self.labelsArr)")
+            
+            guard self.labelsArr.count > 0 else { return }
+            
+            for (index,item) in self.items.enumerated() {
+                for n in 0...self.labelsArr.count-1 {
+                    let label = self.labelsArr[n]
+                    if item.name == label {
+                        self.items[index].checked = true
+                    }
+                }
+            }
+            
+            print("items: \(self.items)")
+            self.output?.enableNextBtn()
         }
         // .scaleFill results in a slight skew but the model was trained accordingly
         // see https://developer.apple.com/documentation/vision/vnimagecropandscaleoption for more information
@@ -96,3 +166,4 @@ class DetectionScreenPresenter {
     }
 
 }
+

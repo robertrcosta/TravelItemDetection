@@ -11,6 +11,7 @@ class ResultViewController: UIViewController {
     
     let presenter = ResultPresenter()
     var items = [Item]()
+    var filteredItems = [Item]()
     
     // MARK: - View Variables
     
@@ -20,6 +21,7 @@ class ResultViewController: UIViewController {
     
     init(items: [Item]) {
         self.items = items
+        filteredItems = self.items.filter { $0.checked == false }
         super.init(nibName: nil, bundle: .main)
     }
     
@@ -146,7 +148,7 @@ class ResultViewController: UIViewController {
     
     func cellForPhrase(at indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhraseCell", for: indexPath) as? PhraseCell {
-            let phrase = items[indexPath.row].phrase
+            let phrase = filteredItems[indexPath.row].phrase
             cell.phraseLbl.text = phrase
             return cell
         } else {
@@ -174,8 +176,8 @@ class ResultViewController: UIViewController {
 
 extension ResultViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        pageControl.numberOfPages = items.count
-        return items.count
+        pageControl.numberOfPages = filteredItems.count
+        return filteredItems.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
