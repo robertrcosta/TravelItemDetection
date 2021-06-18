@@ -10,4 +10,5 @@ import Foundation
 struct Item {
     var name: String?
     var phrase: String?
+    var checked = true
 }

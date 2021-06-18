@@ -23,16 +23,19 @@ class ItemCell: UITableViewCell {
     
     func setup() {
         
+        backgroundColor = .clear
+        
         let contentStackView = UIStackView()
         contentStackView.alignment = .fill
         contentStackView.axis = .horizontal
         contentStackView.spacing = 10
         
         nameLbl.numberOfLines = 1
+        nameLbl.font = UIFont.systemFont(ofSize: 20)
         
         contentStackView.addArrangedSubview(nameLbl)
         
         contentStackView.translatesAutoresizingMaskIntoConstraints = false
-        contentView.addSubviewWithPinnedConstraints(view: contentStackView, top: 0, leading: 0, bottom: 0, trailing: 0)
+        contentView.addSubviewWithPinnedConstraints(view: contentStackView, top: 0, leading: 20, bottom: 0, trailing: 0)
     }
 }
