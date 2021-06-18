@@ -1,16 +1,17 @@
 //
-//  DetectionScreenPresenter.swift
+//  Presenter.swift
 //  TravelItemsDetection
 //
-//  Created by Robert Rodriguez on 18/6/21.
+//  Created by Gerard Riera Puig on 17/6/21.
 //
 
 import UIKit
 import CoreML
+import Vision
 
 class DetectionScreenPresenter {
     
-    let model = try? YOLOv3Tiny(configuration: MLModelConfiguration())
+    let model = try? TravelItemDetectionModel(configuration: MLModelConfiguration())
     
     func processImage(info: [UIImagePickerController.InfoKey : Any]) {
         
@@ -46,10 +47,27 @@ class DetectionScreenPresenter {
         UIGraphicsPopContext()
         CVPixelBufferUnlockBaseAddress(pixelBuffer!, CVPixelBufferLockFlags(rawValue: 0))
         
-        guard let prediction = try? model?.prediction(image: pixelBuffer!, iouThreshold: 1.0, confidenceThreshold: 1.0) else {
+        
+        guard let mlModel = try? model?.model,
+              let detector = try? VNCoreMLModel(for: mlModel) else {
+            print("Failed to load detector!")
             return
         }
+
+
+        let request = VNCoreMLRequest(model: detector) { [weak self] request, error in
+            print(request)
+        }
+        // .scaleFill results in a slight skew but the model was trained accordingly
+        // see https://developer.apple.com/documentation/vision/vnimagecropandscaleoption for more information
+        request.imageCropAndScaleOption = .scaleFit
         
-        print("Prediction: \(prediction.featureNames)")
+        let handler = VNImageRequestHandler(cvPixelBuffer: pixelBuffer!, orientation: .up, options: [:])
+
+        do {
+            try handler.perform([request])
+        } catch {
+            print("CoreML request failed with error: \(error.localizedDescription)")
+        }
     }
 }

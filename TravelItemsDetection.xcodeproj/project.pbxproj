@@ -19,6 +19,7 @@
 		A0AB5864267B62BA0028DB6E /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AB5863267B62BA0028DB6E /* MainPresenter.swift */; };
 		A0AB586D267B7D130028DB6E /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AB586C267B7D130028DB6E /* ListViewController.swift */; };
 		A0AB5870267B7D670028DB6E /* ListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AB586F267B7D670028DB6E /* ListPresenter.swift */; };
+		B53097BB267C9F3200F95FC1 /* TravelItemDetectionModel.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = B53097BA267C9F3200F95FC1 /* TravelItemDetectionModel.mlmodel */; };
 		B557E3F4267C8D650022FC9E /* DetectionScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B557E3F3267C8D650022FC9E /* DetectionScreenViewController.swift */; };
 		B557E3FA267C8DD50022FC9E /* DetectionScreenPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B557E3F9267C8DD50022FC9E /* DetectionScreenPresenter.swift */; };
 /* End PBXBuildFile section */
@@ -38,6 +39,7 @@
 		A0AB5863267B62BA0028DB6E /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
 		A0AB586C267B7D130028DB6E /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		A0AB586F267B7D670028DB6E /* ListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPresenter.swift; sourceTree = "<group>"; };
+		B53097BA267C9F3200F95FC1 /* TravelItemDetectionModel.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = TravelItemDetectionModel.mlmodel; sourceTree = "<group>"; };
 		B557E3F3267C8D650022FC9E /* DetectionScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectionScreenViewController.swift; sourceTree = "<group>"; };
 		B557E3F9267C8DD50022FC9E /* DetectionScreenPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectionScreenPresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -56,6 +58,7 @@
 		A004F093267C7C22001BF508 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				B53097BA267C9F3200F95FC1 /* TravelItemDetectionModel.mlmodel */,
 				A004F095267C87FE001BF508 /* YOLOv3Tiny.mlmodel */,
 			);
 			path = Models;
@@ -243,6 +246,7 @@
 				B557E3FA267C8DD50022FC9E /* DetectionScreenPresenter.swift in Sources */,
 				A01B5070267B7E2B00ACBB24 /* ItemCell.swift in Sources */,
 				A0AB5870267B7D670028DB6E /* ListPresenter.swift in Sources */,
+				B53097BB267C9F3200F95FC1 /* TravelItemDetectionModel.mlmodel in Sources */,
 				A0AB5851267B5CAA0028DB6E /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
