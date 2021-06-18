@@ -72,8 +72,11 @@ class DetectionScreenPresenter {
         
         guard let image = info[.originalImage] as? UIImage else { return }
         
-        UIGraphicsBeginImageContextWithOptions(CGSize(width: 400, height: 300), true, 1.0)
-        image.draw(in: CGRect(x: 0, y: 0, width: 400, height: 300))
+        let screenWidth = UIScreen.main.bounds.width
+        let adjustedHeight = screenWidth/image.size.width * image.size.height
+        
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: screenWidth, height: adjustedHeight), true, 1.0)
+        image.draw(in: CGRect(x: 0, y: 0, width: screenWidth, height: adjustedHeight))
         
         let newImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
