@@ -115,12 +115,6 @@ class ViewController: UIViewController {
     }
     
     @objc
-    func showList() {
-        let listVC = ListViewController()
-        present(listVC, animated: true)
-    }
-    
-    @objc
     func openCamera() {
         if !UIImagePickerController.isSourceTypeAvailable(.camera) {
             return

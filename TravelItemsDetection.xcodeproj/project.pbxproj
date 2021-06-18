@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A004F096267C87FE001BF508 /* YOLOv3Tiny.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = A004F095267C87FE001BF508 /* YOLOv3Tiny.mlmodel */; };
 		A01B5070267B7E2B00ACBB24 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01B506F267B7E2B00ACBB24 /* ItemCell.swift */; };
 		A01B5075267B7F1400ACBB24 /* UIView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01B5074267B7F1400ACBB24 /* UIView+Utils.swift */; };
 		A054941C267C8D5C00940A09 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A054941B267C8D5C00940A09 /* ResultViewController.swift */; };
@@ -21,15 +20,12 @@
 		A0AB5858267B5CAC0028DB6E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0AB5857267B5CAC0028DB6E /* Assets.xcassets */; };
 		A0AB585B267B5CAC0028DB6E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0AB5859267B5CAC0028DB6E /* LaunchScreen.storyboard */; };
 		A0AB5864267B62BA0028DB6E /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AB5863267B62BA0028DB6E /* MainPresenter.swift */; };
-		A0AB586D267B7D130028DB6E /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AB586C267B7D130028DB6E /* ListViewController.swift */; };
-		A0AB5870267B7D670028DB6E /* ListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AB586F267B7D670028DB6E /* ListPresenter.swift */; };
 		B53097BB267C9F3200F95FC1 /* TravelItemDetectionModel.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = B53097BA267C9F3200F95FC1 /* TravelItemDetectionModel.mlmodel */; };
 		B557E3F4267C8D650022FC9E /* DetectionScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B557E3F3267C8D650022FC9E /* DetectionScreenViewController.swift */; };
 		B557E3FA267C8DD50022FC9E /* DetectionScreenPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B557E3F9267C8DD50022FC9E /* DetectionScreenPresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		A004F095267C87FE001BF508 /* YOLOv3Tiny.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = YOLOv3Tiny.mlmodel; sourceTree = "<group>"; };
 		A01B506F267B7E2B00ACBB24 /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
 		A01B5074267B7F1400ACBB24 /* UIView+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Utils.swift"; sourceTree = "<group>"; };
 		A054941B267C8D5C00940A09 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
@@ -45,8 +41,6 @@
 		A0AB585A267B5CAC0028DB6E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A0AB585C267B5CAC0028DB6E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A0AB5863267B62BA0028DB6E /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
-		A0AB586C267B7D130028DB6E /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
-		A0AB586F267B7D670028DB6E /* ListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPresenter.swift; sourceTree = "<group>"; };
 		B53097BA267C9F3200F95FC1 /* TravelItemDetectionModel.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = TravelItemDetectionModel.mlmodel; sourceTree = "<group>"; };
 		B557E3F3267C8D650022FC9E /* DetectionScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectionScreenViewController.swift; sourceTree = "<group>"; };
 		B557E3F9267C8DD50022FC9E /* DetectionScreenPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectionScreenPresenter.swift; sourceTree = "<group>"; };
@@ -67,7 +61,6 @@
 			isa = PBXGroup;
 			children = (
 				B53097BA267C9F3200F95FC1 /* TravelItemDetectionModel.mlmodel */,
-				A004F095267C87FE001BF508 /* YOLOv3Tiny.mlmodel */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -75,10 +68,9 @@
 		A01B506D267B7E1800ACBB24 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				B557E3F6267C8D6F0022FC9E /* DetectionScreen */,
 				A0AB5873267B7D8F0028DB6E /* Main */,
+				B557E3F6267C8D6F0022FC9E /* DetectionScreen */,
 				A0549419267C8D3700940A09 /* Result */,
-				A0AB5874267B7D980028DB6E /* List */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -164,15 +156,6 @@
 				A0AB5863267B62BA0028DB6E /* MainPresenter.swift */,
 			);
 			path = Main;
-			sourceTree = "<group>";
-		};
-		A0AB5874267B7D980028DB6E /* List */ = {
-			isa = PBXGroup;
-			children = (
-				A0AB586C267B7D130028DB6E /* ListViewController.swift */,
-				A0AB586F267B7D670028DB6E /* ListPresenter.swift */,
-			);
-			path = List;
 			sourceTree = "<group>";
 		};
 		A0AB5875267B7DA00028DB6E /* Application */ = {
@@ -266,18 +249,15 @@
 			files = (
 				A0AB5853267B5CAA0028DB6E /* ViewController.swift in Sources */,
 				A0AB584F267B5CAA0028DB6E /* AppDelegate.swift in Sources */,
-				A004F096267C87FE001BF508 /* YOLOv3Tiny.mlmodel in Sources */,
 				A01B5075267B7F1400ACBB24 /* UIView+Utils.swift in Sources */,
 				B557E3F4267C8D650022FC9E /* DetectionScreenViewController.swift in Sources */,
 				A0AB5864267B62BA0028DB6E /* MainPresenter.swift in Sources */,
 				A0549425267C8E4E00940A09 /* Item.swift in Sources */,
-				A0AB5864267B62BA0028DB6E /* Presenter.swift in Sources */,
+				A0AB5864267B62BA0028DB6E /* MainPresenter.swift in Sources */,
 				A0549434267C925700940A09 /* PhraseCell.swift in Sources */,
 				A054941C267C8D5C00940A09 /* ResultViewController.swift in Sources */,
-				A0AB586D267B7D130028DB6E /* ListViewController.swift in Sources */,
 				B557E3FA267C8DD50022FC9E /* DetectionScreenPresenter.swift in Sources */,
 				A01B5070267B7E2B00ACBB24 /* ItemCell.swift in Sources */,
-				A0AB5870267B7D670028DB6E /* ListPresenter.swift in Sources */,
 				B53097BB267C9F3200F95FC1 /* TravelItemDetectionModel.mlmodel in Sources */,
 				A0549420267C8D6500940A09 /* ResultPresenter.swift in Sources */,
 				A0AB5851267B5CAA0028DB6E /* SceneDelegate.swift in Sources */,
