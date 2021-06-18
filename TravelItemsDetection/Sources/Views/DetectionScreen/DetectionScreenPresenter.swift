@@ -11,62 +11,10 @@ import Vision
 
 class DetectionScreenPresenter {
     
-    public var items = [
-        Item(
-            name: "Bagpack",
-            phrase: "How do you pretend to carry your things?",
-            checked: false
-        ),
-        Item(
-            name: "Camera",
-            phrase: "How do you pretend to craete visualizable memories of your beautiful experiences?",
-            checked: false
-        ),
-        Item(
-            name: "Charger",
-            phrase: "How do you pretend to be adicted to your social feeds while you should enjoy your vacations?",
-            checked: false
-        ),
-        Item(
-            name: "Face mask",
-            phrase: "How do you pretend to proctect against the COVID-19?",
-            checked: false
-        ),
-        Item(
-            name: "Flip flops",
-            phrase: "Do you really want to walk barefooted on your vacations?",
-            checked: false
-        ),
-        Item(
-            name: "Pastport",
-            phrase: "What are you going to show on the Airport's police control?",
-            checked: false
-        ),
-        Item(
-            name: "Shirt",
-            phrase: "How do you pretend to carry your things?",
-            checked: false
-        ),
-        Item(
-            name: "Socks",
-            phrase: "How do you pretend to protect your foot?",
-            checked: false
-        ),
-        Item(
-            name: "Suncream",
-            phrase: "You're gonna burn your skin",
-            checked: false
-        ),
-        Item(
-            name: "Sunglasses",
-            phrase: "You'll be blind without those",
-            checked: false
-        )
-    ]
-
     weak var output: DetectionScreenViewController?
     let model = try? TravelItemDetectionModel(configuration: MLModelConfiguration())
-    var labelsArr = [String]()
+    var labels = [String]()
+    var travelItems = [TravelItem]()
 
     func processImage(info: [UIImagePickerController.InfoKey : Any]) {
         
@@ -136,23 +84,19 @@ class DetectionScreenPresenter {
                 let newBounds = objectBounds.applying(translate).applying(verticalFlip)
                 
                 self.output?.drawBox(rect: newBounds, identifier: topLabelObservation.identifier, confidence: topLabelObservation.confidence)
-                self.labelsArr.append(topLabelObservation.identifier)
+                self.labels.append(topLabelObservation.identifier)
             }
             
-            print("labelsArr: \(self.labelsArr)")
+            print("labelsArr: \(self.labels)")
             
-            guard self.labelsArr.count > 0 else { return }
+            guard self.labels.count > 0 else { return }
             
-            for (index,item) in self.items.enumerated() {
-                for n in 0...self.labelsArr.count-1 {
-                    let label = self.labelsArr[n]
-                    if item.name == label {
-                        self.items[index].checked = true
-                    }
-                }
+            for n in 0...self.labels.count-1 {
+                let label = self.labels[n]
+                let travelItem = TravelItem(identifier: label, enabled: true)
+                self.travelItems.append(travelItem)
             }
             
-            print("items: \(self.items)")
             self.output?.enableNextBtn()
         }
         // .scaleFill results in a slight skew but the model was trained accordingly

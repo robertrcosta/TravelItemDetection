@@ -11,7 +11,7 @@
 		A01B5075267B7F1400ACBB24 /* UIView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01B5074267B7F1400ACBB24 /* UIView+Utils.swift */; };
 		A054941C267C8D5C00940A09 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A054941B267C8D5C00940A09 /* ResultViewController.swift */; };
 		A0549420267C8D6500940A09 /* ResultPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A054941F267C8D6500940A09 /* ResultPresenter.swift */; };
-		A0549425267C8E4E00940A09 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0549424267C8E4E00940A09 /* Item.swift */; };
+		A0549425267C8E4E00940A09 /* TravelItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0549424267C8E4E00940A09 /* TravelItem.swift */; };
 		A0549434267C925700940A09 /* PhraseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0549433267C925700940A09 /* PhraseCell.swift */; };
 		A0AB584F267B5CAA0028DB6E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AB584E267B5CAA0028DB6E /* AppDelegate.swift */; };
 		A0AB5851267B5CAA0028DB6E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AB5850267B5CAA0028DB6E /* SceneDelegate.swift */; };
@@ -30,7 +30,7 @@
 		A01B5074267B7F1400ACBB24 /* UIView+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Utils.swift"; sourceTree = "<group>"; };
 		A054941B267C8D5C00940A09 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		A054941F267C8D6500940A09 /* ResultPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultPresenter.swift; sourceTree = "<group>"; };
-		A0549424267C8E4E00940A09 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		A0549424267C8E4E00940A09 /* TravelItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelItem.swift; sourceTree = "<group>"; };
 		A0549433267C925700940A09 /* PhraseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhraseCell.swift; sourceTree = "<group>"; };
 		A0AB584B267B5CAA0028DB6E /* TravelItemsDetection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravelItemsDetection.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0AB584E267B5CAA0028DB6E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -104,7 +104,7 @@
 		A0549423267C8E4300940A09 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				A0549424267C8E4E00940A09 /* Item.swift */,
+				A0549424267C8E4E00940A09 /* TravelItem.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -252,8 +252,7 @@
 				A01B5075267B7F1400ACBB24 /* UIView+Utils.swift in Sources */,
 				B557E3F4267C8D650022FC9E /* DetectionScreenViewController.swift in Sources */,
 				A0AB5864267B62BA0028DB6E /* MainPresenter.swift in Sources */,
-				A0549425267C8E4E00940A09 /* Item.swift in Sources */,
-				A0AB586D267B7D130028DB6E /* ListViewController.swift in Sources */,
+				A0549425267C8E4E00940A09 /* TravelItem.swift in Sources */,
 				A0AB5864267B62BA0028DB6E /* MainPresenter.swift in Sources */,
 				A0549434267C925700940A09 /* PhraseCell.swift in Sources */,
 				A054941C267C8D5C00940A09 /* ResultViewController.swift in Sources */,

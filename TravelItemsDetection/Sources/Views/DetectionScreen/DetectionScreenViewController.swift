@@ -13,7 +13,6 @@ class DetectionScreenViewController: UIViewController {
     let activityIndicator = UIActivityIndicatorView.init(style: .medium)
     var presenter: DetectionScreenPresenter = DetectionScreenPresenter()
     var mediaInfo: [UIImagePickerController.InfoKey : Any] = [:]
-    
     var imageView: UIImageView!
     
     let nextBtn = UIButton(type: .system)
@@ -36,7 +35,6 @@ class DetectionScreenViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setup()
     }
     
@@ -81,7 +79,7 @@ class DetectionScreenViewController: UIViewController {
     
     @objc
     func pushResultVC() {
-        navigationController?.show(ResultViewController(items: presenter.items), sender: nil)
+        navigationController?.show(ResultViewController(items: presenter.travelItems), sender: nil)
     }
     
     func createTextSubLayerInBounds(_ bounds: CGRect, identifier: String, confidence: VNConfidence) -> CATextLayer {

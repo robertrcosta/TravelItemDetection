@@ -10,8 +10,21 @@ import UIKit
 class ResultViewController: UIViewController {
     
     let presenter = ResultPresenter()
-    var items = [Item]()
-    var filteredItems = [Item]()
+    var myItems = [TravelItem]()
+    var allPossibleTravelItems: [TravelItem] {
+        var allPossibleTravelItemsTemp = [TravelItem]()
+        for travelItemLabel in TravelItemLabel.allCases {
+            var travelItem = TravelItem(identifier: travelItemLabel.rawValue)
+            for item in myItems {
+                if travelItem.name == item.name {
+                    travelItem.checked = true
+                    continue
+                }
+            }
+            allPossibleTravelItemsTemp.append(travelItem)
+        }
+        return allPossibleTravelItemsTemp
+    }
     
     // MARK: - View Variables
     
@@ -19,9 +32,8 @@ class ResultViewController: UIViewController {
     let tableView = UITableView()
     let pageControl = UIPageControl()
     
-    init(items: [Item]) {
-        self.items = items
-        filteredItems = self.items.filter { $0.checked == false }
+    init(items: [TravelItem]) {
+        self.myItems = items
         super.init(nibName: nil, bundle: .main)
     }
     
@@ -35,6 +47,10 @@ class ResultViewController: UIViewController {
     }
     
     func setup() {
+        
+        if let rootVC = navigationController?.viewControllers.first {
+            navigationController?.viewControllers = [rootVC, self]
+        }
         
         title = "Don't you miss something?"
         
@@ -94,10 +110,14 @@ class ResultViewController: UIViewController {
         pageControl.translatesAutoresizingMaskIntoConstraints = false
         pageControl.heightAnchor.constraint(equalToConstant: 50).isActive = true
         pageControl.isUserInteractionEnabled = false
+        
         stackCollection.addArrangedSubview(pageControl)
         
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        layout.minimumLineSpacing = 0
+        layout.minimumInteritemSpacing = 0
         
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -110,7 +130,7 @@ class ResultViewController: UIViewController {
         collectionView.showsVerticalScrollIndicator = false
         
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        contentCollectionView.addSubviewWithPinnedConstraints(view: collectionView, top: 15, leading: 15, bottom: 15, trailing: 15)
+        contentCollectionView.addSubviewWithPinnedConstraints(view: collectionView, top: 0, leading: 0, bottom: 0, trailing: 0)
         
         collectionView.reloadData()
         
@@ -148,7 +168,7 @@ class ResultViewController: UIViewController {
     
     func cellForPhrase(at indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhraseCell", for: indexPath) as? PhraseCell {
-            let phrase = filteredItems[indexPath.row].phrase
+            let phrase = allPossibleTravelItems.filter { $0.checked == false }[indexPath.row].phrase
             cell.phraseLbl.text = phrase
             return cell
         } else {
@@ -158,7 +178,7 @@ class ResultViewController: UIViewController {
     
     func cellForItem(at indexPath: IndexPath) -> UITableViewCell {
         let cell = ItemCell(style: .default, reuseIdentifier: "ItemCell")
-        let item = items[indexPath.row]
+        let item = allPossibleTravelItems[indexPath.row]
         cell.selectionStyle = .none
         cell.accessoryType = item.checked ? .checkmark : .none
         cell.nameLbl.text = item.name
@@ -176,8 +196,8 @@ class ResultViewController: UIViewController {
 
 extension ResultViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        pageControl.numberOfPages = filteredItems.count
-        return filteredItems.count
+        pageControl.numberOfPages = allPossibleTravelItems.filter { $0.checked == false }.count
+        return pageControl.numberOfPages
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -185,7 +205,7 @@ extension ResultViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: self.collectionView.frame.width, height: self.collectionView.frame.height)
+        return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
@@ -199,7 +219,7 @@ extension ResultViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items.count
+        return allPossibleTravelItems.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

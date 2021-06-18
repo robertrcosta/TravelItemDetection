@@ -12,6 +12,11 @@ class PhraseCell: UICollectionViewCell {
     
     let phraseLbl = UILabel()
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        phraseLbl.text = nil
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: .zero)
         setup()
@@ -28,6 +33,7 @@ class PhraseCell: UICollectionViewCell {
         phraseLbl.textAlignment = .center
         
         phraseLbl.translatesAutoresizingMaskIntoConstraints = false
-        contentView.addSubviewWithPinnedConstraints(view: phraseLbl, top: 0, leading: 0, bottom: 0, trailing: 10)
+        contentView.addSubviewWithPinnedConstraints(view: phraseLbl, top: 10, leading: 10, bottom: 10, trailing: 10)
+        layoutIfNeeded()
     }
 }
