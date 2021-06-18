@@ -147,6 +147,8 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        presenter.getImage(info: info)
+        dismiss(animated: true, completion: {
+            self.presenter.processImage(info: info)
+        })   
     }
 }

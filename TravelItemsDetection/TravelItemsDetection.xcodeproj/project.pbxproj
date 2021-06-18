@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A004F096267C87FE001BF508 /* YOLOv3Tiny.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = A004F095267C87FE001BF508 /* YOLOv3Tiny.mlmodel */; };
 		A01B5070267B7E2B00ACBB24 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01B506F267B7E2B00ACBB24 /* ItemCell.swift */; };
 		A01B5075267B7F1400ACBB24 /* UIView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01B5074267B7F1400ACBB24 /* UIView+Utils.swift */; };
 		A0AB584F267B5CAA0028DB6E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AB584E267B5CAA0028DB6E /* AppDelegate.swift */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A004F095267C87FE001BF508 /* YOLOv3Tiny.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = YOLOv3Tiny.mlmodel; sourceTree = "<group>"; };
 		A01B506F267B7E2B00ACBB24 /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
 		A01B5074267B7F1400ACBB24 /* UIView+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Utils.swift"; sourceTree = "<group>"; };
 		A0AB584B267B5CAA0028DB6E /* TravelItemsDetection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravelItemsDetection.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -47,6 +49,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A004F093267C7C22001BF508 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A004F095267C87FE001BF508 /* YOLOv3Tiny.mlmodel */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		A01B506D267B7E1800ACBB24 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -91,6 +101,7 @@
 		A0AB584D267B5CAA0028DB6E /* TravelItemsDetection */ = {
 			isa = PBXGroup;
 			children = (
+				A004F093267C7C22001BF508 /* Models */,
 				A01B5073267B7F0A00ACBB24 /* Utils */,
 				A0AB5875267B7DA00028DB6E /* Application */,
 				A0AB5872267B7D890028DB6E /* Sources */,
@@ -210,6 +221,7 @@
 			files = (
 				A0AB5853267B5CAA0028DB6E /* ViewController.swift in Sources */,
 				A0AB584F267B5CAA0028DB6E /* AppDelegate.swift in Sources */,
+				A004F096267C87FE001BF508 /* YOLOv3Tiny.mlmodel in Sources */,
 				A01B5075267B7F1400ACBB24 /* UIView+Utils.swift in Sources */,
 				A0AB5864267B62BA0028DB6E /* Presenter.swift in Sources */,
 				A0AB586D267B7D130028DB6E /* ListViewController.swift in Sources */,
