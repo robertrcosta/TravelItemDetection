@@ -21,6 +21,10 @@ class DetectionScreenViewController: UIViewController {
     init(mediaInfo: [UIImagePickerController.InfoKey : Any]) {
         super.init(nibName: nil, bundle: nil)
         
+        nextBtn.setTitle("Check list", for: .normal)
+        nextBtn.addTarget(self, action: #selector(pushResultVC), for: .touchUpInside)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: nextBtn)
+        
         presenter.output = self
         
         self.mediaInfo = mediaInfo
@@ -37,7 +41,7 @@ class DetectionScreenViewController: UIViewController {
     }
     
     func setup() {
-        view.backgroundColor = UIColor.gray
+        view.backgroundColor = UIColor.white
         view.addSubview(activityIndicator)
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
@@ -53,13 +57,6 @@ class DetectionScreenViewController: UIViewController {
         imageView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         imageView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         imageView.heightAnchor.constraint(equalToConstant: (image.size.height/image.size.width) * UIScreen.main.bounds.width).isActive = true
-        
-        nextBtn.translatesAutoresizingMaskIntoConstraints = false
-        nextBtn.setTitle("Continue", for: .normal)
-        nextBtn.setTitleColor(.white, for: .normal)
-        nextBtn.addTarget(self, action: #selector(pushResultVC), for: .touchUpInside)
-        nextBtn.isHidden = true
-        view.addSubviewWithPinnedConstraints(view: nextBtn, bottom: 30, trailing: 30)
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -69,12 +66,13 @@ class DetectionScreenViewController: UIViewController {
     func drawBox(rect: CGRect, identifier: String, confidence: VNConfidence) {
         let shapeLayer = self.createRoundedRectLayerWithBounds(rect)
         
-//        let textLayer = self.createTextSubLayerInBounds(
-//            rect,
-//            identifier: identifier,
-//            confidence: confidence)
+        let textLayer = self.createTextSubLayerInBounds(
+            rect,
+            identifier: identifier,
+            confidence: confidence)
         
         imageView.layer.insertSublayer(shapeLayer, at: 10)
+        imageView.layer.insertSublayer(textLayer, at: 11)
     }
     
     func enableNextBtn() {
@@ -89,18 +87,15 @@ class DetectionScreenViewController: UIViewController {
     func createTextSubLayerInBounds(_ bounds: CGRect, identifier: String, confidence: VNConfidence) -> CATextLayer {
         let textLayer = CATextLayer()
         textLayer.name = "Object Label"
-        let formattedString = NSMutableAttributedString(string: String(format: "\(identifier)\nConfidence:  %.2f", confidence))
-        let largeFont = UIFont(name: "Helvetica", size: 24.0)!
-        formattedString.addAttributes([NSAttributedString.Key.font: largeFont], range: NSRange(location: 0, length: identifier.count))
+        let formattedString = NSMutableAttributedString(string: String(format: "\(identifier)"))
+        let largeFont = UIFont(name: "Helvetica", size: 13.0)!
+        formattedString.addAttributes([NSAttributedString.Key.font: largeFont], range: NSRange(location: 0, length: formattedString.length))
         textLayer.string = formattedString
         textLayer.bounds = CGRect(x: 0, y: 0, width: bounds.size.height - 10, height: bounds.size.width - 10)
         textLayer.position = CGPoint(x: bounds.midX, y: bounds.midY)
-        textLayer.shadowOpacity = 0.7
-        textLayer.shadowOffset = CGSize(width: 2, height: 2)
-        textLayer.foregroundColor = CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [0.0, 0.0, 0.0, 1.0])
-        textLayer.contentsScale = 2.0 // retina rendering
+        textLayer.foregroundColor = UIColor.black.cgColor
         // rotate the layer into screen orientation and scale and mirror
-        textLayer.setAffineTransform(CGAffineTransform(rotationAngle: CGFloat(.pi / 2.0)).scaledBy(x: 1.0, y: -1.0))
+        textLayer.setAffineTransform(CGAffineTransform(rotationAngle: CGFloat(.pi / 2.0)))
         return textLayer
     }
     
@@ -109,7 +104,9 @@ class DetectionScreenViewController: UIViewController {
         shapeLayer.bounds = bounds
         shapeLayer.position = CGPoint(x: bounds.midX, y: bounds.midY)
         shapeLayer.name = "Found Object"
-        shapeLayer.backgroundColor = CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [1.0, 1.0, 0.2, 0.4])
+        shapeLayer.borderWidth = 2
+        shapeLayer.borderColor = UIColor.cyan.cgColor
+        shapeLayer.backgroundColor = UIColor.white.withAlphaComponent(0.4).cgColor
         shapeLayer.cornerRadius = 7
         return shapeLayer
     }
