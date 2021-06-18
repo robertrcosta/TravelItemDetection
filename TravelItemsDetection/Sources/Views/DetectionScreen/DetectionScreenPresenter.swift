@@ -74,7 +74,12 @@ class DetectionScreenPresenter {
                     Int(screenWidth),
                     Int(newImage.size.width/screenWidth * newImage.size.height))
                 
-                self?.output?.drawBox(rect: objectBounds, identifier: topLabelObservation.identifier, confidence: topLabelObservation.confidence)
+                
+                let verticalFlip = CGAffineTransform(scaleX: 1, y: -1)
+                let translate = CGAffineTransform(translationX: 0, y: -newImage.size.height)
+                let newBounds = objectBounds.applying(translate).applying(verticalFlip)
+                
+                self?.output?.drawBox(rect: newBounds, identifier: topLabelObservation.identifier, confidence: topLabelObservation.confidence)
             }
         }
         // .scaleFill results in a slight skew but the model was trained accordingly
